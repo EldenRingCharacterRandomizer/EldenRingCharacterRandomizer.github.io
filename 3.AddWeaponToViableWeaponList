@@ -1,0 +1,11 @@
+For each of the combinations in the following list, add the weapon to the matching attribute combination's compatibleWeapons array in randomizer.json.
+
+Bear in mind these abbreviations
+Str: Strength
+Dex: Dexterity
+Int: Intelligence
+Fai: Faith
+Arc: Arcane
+
+   * {Dex, Fai}
+   * {Str, Dex, Fai}

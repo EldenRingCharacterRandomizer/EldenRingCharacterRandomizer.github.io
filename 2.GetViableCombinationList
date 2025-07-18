@@ -1,0 +1,17 @@
+From the following list of stat combinations:
+
+   * {Str: E}
+   * {Dex: B}
+   * {Fai: C}
+   * {Str: E, Dex: B}
+   * {Str: E, Fai: C}
+   * {Dex: B, Fai: C}
+   * {Str: E, Dex: B, Fai: C}
+   
+If the list contains any combinations of more than 3 attributes, split them into each possible combination of 3 from that combination, add them to the list, and then remove any duplicates.
+
+Considering that for each combination of stats, each letter has the following amount of points: {S=30, A=30, B=20, C=15, D=10, E=5}
+
+Knowing this, filter out any of the combinations in the list that contain a total score of less than 30 points. 
+
+Print that list with only the attribute strings having the letters you used to filter removed. For example: {Str}, {Str, Fai}, {Dex, Arc, Str}

@@ -1,0 +1,337 @@
+Inside the html table at the end of this prompt there is a section called Stat Scaling contained in it that has rows of all of   
+    the different possible attribute letter combinations for an elden ring weapon. Extract that list of possible stat       
+    scaling values, and then print it to the console. For example:
+
+   * {Str: E, Dex: B}
+   * {Str: B}
+   * {Str: E, Dex: A}
+   * {Str: B, Dex: B}
+   * {Str: C, Dex: E}
+   * {Str: E, Dex: D, Fai: B}
+   * {Str: E, Dex: C}
+   * {Str: E, Dex: D, Fai: B}
+   * {Str: E, Dex: D, Int: B}
+   * {Str: E, Dex: B, Int: C}
+   * {Str: D, Dex: B, Arc: D}
+   * {Str: D, Dex: B, Arc: D}
+   * {Str: E, Dex: D, Arc: B}
+
+<table class="wiki_table"> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <th colspan="6"><strong><span style="display: block; text-align: center;">Attack Power</span></strong></th> 
+     <th colspan="5"><strong><span style="display: block; text-align: center;">Stat Scaling</span></strong></th> 
+     <th><strong><span style="display: block; text-align: center;">Passive Effects</span></strong></th> 
+     <th colspan="7"><strong><span style="display: block; text-align: center;">Damage Reduction (%)</span></strong></th> 
+    </tr> 
+    <tr> 
+     <th><strong>Celebrant's Sickle</strong></th> 
+     <th style="text-align: center;"><strong>Phy</strong></th> 
+     <th style="text-align: center;"><span style="color: #3fbddd;" data-darkreader-inline-color=""><strong>Mag</strong></span></th> 
+     <th style="text-align: center;"><span style="color: #ff9900;" data-darkreader-inline-color=""><strong>Fir</strong></span></th> 
+     <th style="text-align: center;"><span style="color: #ffff00;" data-darkreader-inline-color=""><strong>Lit</strong></span></th> 
+     <th style="text-align: center;"><span style="color: #ffcc99;" data-darkreader-inline-color=""><strong>Hol</strong></span></th> 
+     <th style="text-align: center;"><span style="color: #339966;" data-darkreader-inline-color=""><strong>Sta</strong></span></th> 
+     <th style="text-align: center;"><strong>Str</strong></th> 
+     <th style="text-align: center;"><strong>Dex</strong></th> 
+     <th style="text-align: center;"><strong>Int</strong></th> 
+     <th style="text-align: center;"><strong>Fai</strong></th> 
+     <th style="text-align: center;"><strong>Arc</strong></th> 
+     <th style="text-align: center;"><strong>Any</strong></th> 
+     <th style="text-align: center;"><strong>Phy</strong></th> 
+     <th style="text-align: center;"><span style="color: #3fbddd;" data-darkreader-inline-color=""><strong>Mag</strong></span></th> 
+     <th style="text-align: center;"><span style="color: #ff9900;" data-darkreader-inline-color=""><strong>Fir</strong></span></th> 
+     <th style="text-align: center;"><span style="color: #ffff00;" data-darkreader-inline-color=""><strong>Lit</strong></span></th> 
+     <th style="text-align: center;"><span style="color: #ffcc99;" data-darkreader-inline-color=""><strong>Hol</strong></span></th> 
+     <th style="text-align: center;"><span style="color: #339966;" data-darkreader-inline-color=""><strong>Bst</strong></span></th> 
+     <th style="text-align: center;"><span style="color: #339966;" data-darkreader-inline-color=""><strong>Rst</strong></span></th> 
+    </tr> 
+    <tr> 
+     <th>Std+25</th> 
+     <td>193</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>E(22)</td> 
+     <td>B(100)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>35</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>18</td> 
+     <td>10</td> 
+    </tr> 
+    <tr> 
+     <th>Hvy+25</th> 
+     <td>176</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>B(137)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>35</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>16.5</td> 
+     <td>10</td> 
+    </tr> 
+    <tr> 
+     <th>Keen+25</th> 
+     <td>165</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>61</td> 
+     <td>E(20)</td> 
+     <td>A(172)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>35</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>16.5</td> 
+     <td>10</td> 
+    </tr> 
+    <tr> 
+     <th>Qua+25</th> 
+     <td>153</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>B(108)</td> 
+     <td>B(108)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>35</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>16.5</td> 
+     <td>10</td> 
+    </tr> 
+    <tr> 
+     <th>Fire+25</th> 
+     <td>127</td> 
+     <td>-</td> 
+     <td>127</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>C(86)</td> 
+     <td>E(9)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>33.25</td> 
+     <td>19</td> 
+     <td>25</td> 
+     <td>23</td> 
+     <td>19</td> 
+     <td>15</td> 
+     <td>9.5</td> 
+    </tr> 
+    <tr> 
+     <th>Flame+25</th> 
+     <td>150</td> 
+     <td>-</td> 
+     <td>150</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>E(7)</td> 
+     <td>D(36)</td> 
+     <td>-</td> 
+     <td>B(101)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>33.25</td> 
+     <td>19</td> 
+     <td>25</td> 
+     <td>23</td> 
+     <td>19</td> 
+     <td>15</td> 
+     <td>9.5</td> 
+    </tr> 
+    <tr> 
+     <th>Lit+25</th> 
+     <td>130</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>130</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>E(9)</td> 
+     <td>C(86)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>33.25</td> 
+     <td>19</td> 
+     <td>23</td> 
+     <td>25</td> 
+     <td>19</td> 
+     <td>15</td> 
+     <td>9.5</td> 
+    </tr> 
+    <tr> 
+     <th>Sac+25</th> 
+     <td>150</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>150</td> 
+     <td>56</td> 
+     <td>E(7)</td> 
+     <td>D(36)</td> 
+     <td>-</td> 
+     <td>B(101)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>33.25</td> 
+     <td>23</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>25</td> 
+     <td>15</td> 
+     <td>9.5</td> 
+    </tr> 
+    <tr> 
+     <th>Mag+25</th> 
+     <td>150</td> 
+     <td>150</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>E(5)</td> 
+     <td>D(26)</td> 
+     <td>B(112)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>33.25</td> 
+     <td>25</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>23</td> 
+     <td>15</td> 
+     <td>9.5</td> 
+    </tr> 
+    <tr> 
+     <th>Col+25</th> 
+     <td>135</td> 
+     <td>115</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>E(24)</td> 
+     <td>B(114)</td> 
+     <td>C(72)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td><a class="wiki_link" title="Elden Ring Frostbite" href="/Frostbite"><img title="frostbite_status_effect_elden_ring_wiki_guide_25px" src="/file/Elden-Ring/frostbite_status_effect_elden_ring_wiki_guide_25px.png" alt="frostbite status effect elden ring wiki guide 25px" width="25" height="25">(105)</a></td> 
+     <td>33.25</td> 
+     <td>23</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>15</td> 
+     <td>9.5</td> 
+    </tr> 
+    <tr> 
+     <th>Poi+25</th> 
+     <td>161</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>D(26)</td> 
+     <td>B(119)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>D(43)</td> 
+     <td><a class="wiki_link" title="Elden Ring Poison" href="/Poison"><img title="poison_status_effect_elden_ring_wiki_guide_25px" src="/file/Elden-Ring/poison_status_effect_elden_ring_wiki_guide_25px.png" alt="poison status effect elden ring wiki guide 25px" width="25" height="25">(95)</a></td> 
+     <td>33.25</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>15</td> 
+     <td>10</td> 
+    </tr> 
+    <tr> 
+     <th>Blood+25</th> 
+     <td>161</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>D(26)</td> 
+     <td>B(119)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>D(43)</td> 
+     <td><a class="wiki_link" title="Elden Ring Hemorrhage" href="/Hemorrhage"><img title="hemorrhage_status_effect_elden_ring_wiki_guide_25px" src="/file/Elden-Ring/hemorrhage_status_effect_elden_ring_wiki_guide_25px.png" alt="hemorrhage status effect elden ring wiki guide 25px" width="25" height="25">(82)</a></td> 
+     <td>33.25</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>19</td> 
+     <td>15</td> 
+     <td>9.5</td> 
+    </tr> 
+    <tr> 
+     <th>Occ+25</th> 
+     <td>168</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>56</td> 
+     <td>E(9)</td> 
+     <td>D(39)</td> 
+     <td>-</td> 
+     <td>-</td> 
+     <td>B(131)</td> 
+     <td>-</td> 
+     <td>35</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>20</td> 
+     <td>16.5</td> 
+     <td>10</td> 
+    </tr> 
+   </tbody> 
+  </table>

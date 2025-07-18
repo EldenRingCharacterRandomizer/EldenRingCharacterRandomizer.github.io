@@ -1,0 +1,293 @@
+Inside the html table at the end of this prompt there is a section called Stat Scaling contained in it that has rows of all of   
+    the different possible attribute letter combinations for an elden ring weapon. Using only the last row in the table, extract that list of possible stat       
+    scaling values, ignoring empty values or values that do not contain a letter, and then every possible combination of 1, 2, or 3 of those extracted values to the console. For example:
+
+   * {Str: E, Dex: B}
+   * {Str: B}
+   * {Str: E, Dex: A}
+   * {Str: B, Dex: B}
+   * {Str: C, Dex: E}
+   * {Str: E, Dex: D, Fai: B}
+   * {Str: E, Dex: C}
+   * {Str: E, Dex: D, Fai: B}
+   * {Str: E, Dex: D, Int: B}
+   * {Str: E, Dex: B, Int: C}
+   * {Str: D, Dex: B, Arc: D}
+   * {Str: D, Dex: B, Arc: D}
+   * {Str: E, Dex: D, Arc: B}
+
+<table class="wiki_table"> 
+  <tbody> 
+   <tr> 
+    <td>&nbsp;</td> 
+    <th colspan="6"><strong><span style="display: block; text-align: center;">Attack Power</span></strong></th> 
+    <th colspan="5"><strong><span style="display: block; text-align: center;">Stat Scaling</span></strong></th> 
+    <th><strong><span style="display: block; text-align: center;">Passive Effects</span></strong></th> 
+    <th colspan="7"><strong><span style="display: block; text-align: center;">Damage Reduction (%)</span></strong></th> 
+   </tr> 
+   <tr> 
+    <th><strong>Black Knife</strong></th> 
+    <th style="text-align: center;"><strong>Phy</strong></th> 
+    <th style="text-align: center;"><span style="color: #3fbddd;"><strong>Mag</strong></span></th> 
+    <th style="text-align: center;"><span style="color: #ff9900;"><strong>Fir</strong></span></th> 
+    <th style="text-align: center;"><span style="color: #ffff00;"><strong>Lit</strong></span></th> 
+    <th style="text-align: center;"><span style="color: #ffcc99;"><strong>Hol</strong></span></th> 
+    <th style="text-align: center;"><span style="color: #339966;"><strong>Sta</strong></span></th> 
+    <th style="text-align: center;"><strong>Str</strong></th> 
+    <th style="text-align: center;"><strong>Dex</strong></th> 
+    <th style="text-align: center;"><strong>Int</strong></th> 
+    <th style="text-align: center;"><strong>Fai</strong></th> 
+    <th style="text-align: center;"><strong>Arc</strong></th> 
+    <th style="text-align: center;"><strong>Any</strong></th> 
+    <th style="text-align: center;"><strong>Phy</strong></th> 
+    <th style="text-align: center;"><span style="color: #3fbddd;"><strong>Mag</strong></span></th> 
+    <th style="text-align: center;"><span style="color: #ff9900;"><strong>Fir</strong></span></th> 
+    <th style="text-align: center;"><span style="color: #ffff00;"><strong>Lit</strong></span></th> 
+    <th style="text-align: center;"><span style="color: #ffcc99;"><strong>Hol</strong></span></th> 
+    <th style="text-align: center;"><span style="color: #339966;"><strong>Bst</strong></span></th> 
+    <th style="text-align: center;"><span style="color: #339966;"><strong>Rst</strong></span></th> 
+   </tr> 
+   <tr> 
+    <th>Standard</th> 
+    <td>66</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>65</td> 
+    <td>28</td> 
+    <td>E(10)</td> 
+    <td>D(55)</td> 
+    <td>-</td> 
+    <td>D(35)</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>15</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +1</th> 
+    <td>75</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>74</td> 
+    <td>30</td> 
+    <td>E</td> 
+    <td>D</td> 
+    <td>-</td> 
+    <td>D</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>15.15</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +2</th> 
+    <td>85</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>83</td> 
+    <td>33</td> 
+    <td>E</td> 
+    <td>C</td> 
+    <td>-</td> 
+    <td>D</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>15.3</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +3</th> 
+    <td>94</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>93</td> 
+    <td>36</td> 
+    <td>E</td> 
+    <td>C</td> 
+    <td>-</td> 
+    <td>D</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>15.45</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +4</th> 
+    <td>104</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>102</td> 
+    <td>39</td> 
+    <td>E</td> 
+    <td>C</td> 
+    <td>-</td> 
+    <td>D</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>15.6</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +5</th> 
+    <td>113</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>112</td> 
+    <td>42</td> 
+    <td>E</td> 
+    <td>C</td> 
+    <td>-</td> 
+    <td>D</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>15.75</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +6</th> 
+    <td>123</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>121</td> 
+    <td>44</td> 
+    <td>E</td> 
+    <td>C</td> 
+    <td>-</td> 
+    <td>D</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>15.9</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +7</th> 
+    <td>132</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>130</td> 
+    <td>47</td> 
+    <td>E</td> 
+    <td>C</td> 
+    <td>-</td> 
+    <td>D</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>16.05</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +8</th> 
+    <td>142</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>140</td> 
+    <td>50</td> 
+    <td>E</td> 
+    <td>B</td> 
+    <td>-</td> 
+    <td>D</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>16.2</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +9</th> 
+    <td>152</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>149</td> 
+    <td>53</td> 
+    <td>E</td> 
+    <td>B</td> 
+    <td>-</td> 
+    <td>C</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>16.35</td> 
+    <td>10</td> 
+   </tr> 
+   <tr> 
+    <th>Standard +10</th> 
+    <td>161</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>159</td> 
+    <td>56</td> 
+    <td>E(18)</td> 
+    <td>B(99)</td> 
+    <td>-</td> 
+    <td>C(63)</td> 
+    <td>-</td> 
+    <td>-</td> 
+    <td>26</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>15</td> 
+    <td>42</td> 
+    <td>16.5</td> 
+    <td>10</td> 
+   </tr> 
+  </tbody> 
+ </table>
