@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elden Ring Character Randomizer</title>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn46yPC90ZXh0Pjwvc3ZnPg==" type="image/svg+xml">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -87,6 +88,27 @@
     </div>
 
     <script>
+        let allTalismansData; // Global variable for all talismans
+        let selectedTalismans = []; // Global variable for selected talismans
+
+        // Function to reroll a single talisman
+        window.rerollTalisman = (index) => {
+            if (allTalismansData.length === 0) return;
+            const talismansCopy = [...allTalismansData];
+            const randomIndex = Math.floor(Math.random() * talismansCopy.length);
+            const newTalismanName = talismansCopy[randomIndex].name;
+            selectedTalismans[index] = newTalismanName;
+
+            // Update the specific list item in the DOM
+            const talismanListElement = document.getElementById('talismanList');
+            if (talismanListElement) {
+                const listItem = talismanListElement.children[index];
+                if (listItem) {
+                    listItem.innerHTML = `${newTalismanName} <button onclick="rerollTalisman(${index})">Reroll</button>`;
+                }
+            }
+        };
+
         document.getElementById('generateButton').addEventListener('click', async () => {
             const displayDiv = document.getElementById('characterDisplay');
             displayDiv.innerHTML = '<p>Generating character...</p>';
@@ -133,66 +155,36 @@
                 spiritAshesHtml += `<li>${ash}</li>`;
             });
             spiritAshesHtml += '</ul>';
-            let talismansData;
+
+            // Fetch talismans data
             try {
                 const response = await fetch('elden_ring_talismans.json');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                talismansData = await response.json();
+                allTalismansData = await response.json(); // Populate global allTalismansData
             } catch (error) {
                 console.error('Error fetching talismans data:', error);
                 displayDiv.innerHTML = '<p style="color: red;">Failed to load talismans data.</p>';
                 return;
             }
+
             const numberOfTalismans = 4; // Always select 4 talismans
-            let selectedTalismans = [];
-            let allTalismansData = [];
+            selectedTalismans = []; // Reset for new generation
 
-            // Function to populate talismans
-            async function populateTalismans() {
-                try {
-                    const response = await fetch('elden_ring_talismans.json');
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    allTalismansData = await response.json();
-                } catch (error) {
-                    console.error('Error fetching talismans data:', error);
-                    displayDiv.innerHTML = '<p style="color: red;">Failed to load talismans data.</p>';
-                    return;
-                }
-
-                selectedTalismans = [];
-                const talismansCopy = [...allTalismansData];
-                for (let i = 0; i < numberOfTalismans; i++) {
-                    if (talismansCopy.length === 0) break;
-                    const randomIndex = Math.floor(Math.random() * talismansCopy.length);
-                    selectedTalismans.push(talismansCopy.splice(randomIndex, 1)[0].name);
-                }
-                updateTalismanDisplay();
-            }
-
-            // Function to update talisman display
-            function updateTalismanDisplay() {
-                let talismansHtml = '';
-                selectedTalismans.forEach((talisman, index) => {
-                    talismansHtml += `<li>${talisman} <button onclick="rerollTalisman(${index})">Reroll</button></li>`;
-                });
-                document.getElementById('talismanList').innerHTML = talismansHtml;
-            }
-
-            // Function to reroll a single talisman
-            window.rerollTalisman = (index) => {
-                if (allTalismansData.length === 0) return;
-                const talismansCopy = [...allTalismansData];
+            const talismansCopy = [...allTalismansData];
+            for (let i = 0; i < numberOfTalismans; i++) {
+                if (talismansCopy.length === 0) break;
                 const randomIndex = Math.floor(Math.random() * talismansCopy.length);
-                selectedTalismans[index] = talismansCopy[randomIndex].name;
-                updateTalismanDisplay();
-            };
+                selectedTalismans.push(talismansCopy.splice(randomIndex, 1)[0].name);
+            }
 
-            // Initial population of talismans
-            await populateTalismans();
+            // Construct talismansHtml for initial display
+            let talismansHtml = '<ul id="talismanList">'; // Ensure ID is here
+            selectedTalismans.forEach((talisman, index) => {
+                talismansHtml += `<li>${talisman} <button onclick="rerollTalisman(${index})">Reroll</button></li>`;
+            });
+            talismansHtml += '</ul>';
 
             let eldenRingSpellsData;
             try {
