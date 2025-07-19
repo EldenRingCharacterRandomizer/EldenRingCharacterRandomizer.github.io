@@ -92,7 +92,34 @@
             displayDiv.innerHTML = '<p>Generating character...</p>';
 
             const mockPrimaryWeapon = "Mock Primary Weapon Name";
-            const mockSpiritAshes = "Mock Spirit Ashes Name";
+            let spiritAshesData;
+            try {
+                const response = await fetch('elden_ring_armor.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                spiritAshesData = await response.json();
+            } catch (error) {
+                console.error('Error fetching spirit ashes data:', error);
+                displayDiv.innerHTML = '<p style="color: red;">Failed to load spirit ashes data.</p>';
+                return;
+            }
+
+            const numberOfSpiritAshes = Math.floor(Math.random() * 5) + 1; // Random number between 1 and 5
+            const selectedSpiritAshes = [];
+            const spiritAshesCopy = [...spiritAshesData]; // Create a mutable copy
+
+            for (let i = 0; i < numberOfSpiritAshes; i++) {
+                if (spiritAshesCopy.length === 0) break; // No more unique ashes to pick
+                const randomIndex = Math.floor(Math.random() * spiritAshesCopy.length);
+                selectedSpiritAshes.push(spiritAshesCopy.splice(randomIndex, 1)[0].name);
+            }
+
+            let spiritAshesHtml = '<ul>';
+            selectedSpiritAshes.forEach(ash => {
+                spiritAshesHtml += `<li>${ash}</li>`;
+            });
+            spiritAshesHtml += '</ul>';
             const mockTalismans = [
                 "Mock Talisman 1",
                 "Mock Talisman 2",
@@ -124,7 +151,8 @@
             displayDiv.innerHTML = `
                 <p><strong>Attributes:</strong> ${mockAttributes}</p>
                 <p><strong>Primary Weapon:</strong> ${mockPrimaryWeapon}</p>
-                <p><strong>Spirit Ashes:</strong> ${mockSpiritAshes}</p>
+                <p><strong>Spirit Ashes:</strong></p>
+                ${spiritAshesHtml}
                 <p><strong>Armor Set:</strong> ${armorSetName}</p>
                 <p><strong>Talismans:</strong></p>
                 <ul>
