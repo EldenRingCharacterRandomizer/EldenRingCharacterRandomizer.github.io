@@ -1,13 +1,19 @@
 From the following list of stat combinations:
 
-   * {Str: E}
-   * {Dex: B}
-   * {Fai: C}
-   * {Str: E, Dex: B}
-   * {Str: E, Fai: C}
-   * {Dex: B, Fai: C}
-   * {Str: E, Dex: B, Fai: C}
-   
+✦ { Str: C, Dex: D }
+  { Str: B }
+  { Str: E, Dex: B }
+  { Str: B, Dex: B }
+  { Str: C, Dex: E }
+  { Str: E, Dex: E, Fai: B }
+  { Str: E, Dex: C }
+  { Str: E, Dex: E, Fai: B }
+  { Str: E, Dex: E, Int: B }
+  { Str: C, Dex: D, Int: C }
+  { Str: C, Dex: D, Arc: D }
+  { Str: C, Dex: D, Arc: D }
+  { Str: D, Dex: E, Arc: B }
+
 If the list contains any combinations of more than 3 attributes, split them into each possible combination of 3 from that combination, add them to the list, and then remove any duplicates.
 
 Considering that for each combination of stats, each letter has the following amount of points: {S=30, A=30, B=20, C=15, D=10, E=5}

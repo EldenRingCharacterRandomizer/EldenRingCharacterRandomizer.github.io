@@ -7,5 +7,7 @@ Int: Intelligence
 Fai: Faith
 Arc: Arcane
 
-   * {Dex, Fai}
-   * {Str, Dex, Fai}
+✦ { Arc, Dex, Str }
+  { Dex, Fai, Str }
+  { Dex, Int, Str }
+  { Dex, Str }

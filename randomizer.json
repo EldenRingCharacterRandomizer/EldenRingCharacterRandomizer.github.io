@@ -2,55 +2,101 @@
   "attributes": [
     {
       "attribute": "Strength",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Parrying Dagger", "Great Knife"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Parrying Dagger",
+        "Great Knife"
+      ]
     },
     {
       "attribute": "Dexterity",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Main-Gauche", "Dagger"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Main-Gauche",
+        "Dagger"
+      ]
     },
     {
       "attribute": "Intelligence",
-      "compatibleWeapons": ["Fire Knight's Shortsword"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword"
+      ]
     },
     {
       "attribute": "Faith",
-      "compatibleWeapons": ["Fire Knight's Shortsword"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword"
+      ]
     },
     {
       "attribute": "Arcane",
-      "compatibleWeapons": ["Fire Knight's Shortsword"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword"
+      ]
     },
     {
       "attribute": "Strength/Dexterity",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Main-Gauche", "Dagger", "Parrying Dagger", "Great Knife", "Wakizashi", "Scorpion's Stinger", "Cinquedea"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Main-Gauche",
+        "Dagger",
+        "Parrying Dagger",
+        "Great Knife",
+        "Wakizashi",
+        "Scorpion's Stinger",
+        "Cinquedea",
+        "Stone-Sheathed Sword",
+        "Longsword"
+      ]
     },
     {
       "attribute": "Strength/Intelligence",
-      "compatibleWeapons": ["Fire Knight's Shortsword"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword"
+      ]
     },
     {
       "attribute": "Strength/Faith",
-      "compatibleWeapons": ["Fire Knight's Shortsword"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword"
+      ]
     },
     {
       "attribute": "Strength/Arcane",
-      "compatibleWeapons": ["Dagger"]
+      "compatibleWeapons": [
+        "Dagger"
+      ]
     },
     {
       "attribute": "Dexterity/Intelligence",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Main-Gauche", "Dagger", "Ivory Sickle", "Crystal Knife"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Main-Gauche",
+        "Dagger",
+        "Ivory Sickle",
+        "Crystal Knife"
+      ]
     },
     {
       "attribute": "Dexterity/Faith",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Main-Gauche"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Main-Gauche"
+      ]
     },
     {
       "attribute": "Dexterity/Arcane",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Main-Gauche", "Dagger"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Main-Gauche",
+        "Dagger"
+      ]
     },
     {
       "attribute": "Intelligence/Faith",
-      "compatibleWeapons": ["Fire Knight's Shortsword"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword"
+      ]
     },
     {
       "attribute": "Intelligence/Arcane",
@@ -62,19 +108,59 @@
     },
     {
       "attribute": "Strength/Dexterity/Intelligence",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Main-Gauche", "Dagger", "Parrying Dagger", "Misericorde", "Great Knife", "Bloodstained Dagger", "Ivory Sickle", "Wakizashi", "Crystal Knife", "Glintstone Kris"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Main-Gauche",
+        "Dagger",
+        "Parrying Dagger",
+        "Misericorde",
+        "Great Knife",
+        "Bloodstained Dagger",
+        "Ivory Sickle",
+        "Wakizashi",
+        "Crystal Knife",
+        "Glintstone Kris",
+        "Velvet Sword of St Trina",
+        "Longsword"
+      ]
     },
     {
       "attribute": "Strength/Dexterity/Faith",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Main-Gauche", "Dagger", "Parrying Dagger", "Great Knife", "Blade of Calling", "Black Knife"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Main-Gauche",
+        "Dagger",
+        "Parrying Dagger",
+        "Great Knife",
+        "Blade of Calling",
+        "Black Knife",
+        "Sword of Light",
+        "Sword of Darkness",
+        "Longsword"
+      ]
     },
     {
       "attribute": "Strength/Dexterity/Arcane",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Main-Gauche", "Dagger", "Parrying Dagger", "Misericorde", "Great Knife", "Bloodstained Dagger", "Wakizashi", "Celebrant's Sickle", "Reduvia"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Main-Gauche",
+        "Dagger",
+        "Parrying Dagger",
+        "Misericorde",
+        "Great Knife",
+        "Bloodstained Dagger",
+        "Wakizashi",
+        "Celebrant's Sickle",
+        "Reduvia",
+        "Short Sword",
+        "Longsword"
+      ]
     },
     {
       "attribute": "Strength/Intelligence/Faith",
-      "compatibleWeapons": ["Fire Knight's Shortsword"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword"
+      ]
     },
     {
       "attribute": "Strength/Intelligence/Arcane",
@@ -82,11 +168,16 @@
     },
     {
       "attribute": "Strength/Faith/Arcane",
-      "compatibleWeapons": ["Fire Knight's Shortsword"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword"
+      ]
     },
     {
       "attribute": "Dexterity/Intelligence/Faith",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Main-Gauche"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Main-Gauche"
+      ]
     },
     {
       "attribute": "Dexterity/Intelligence/Arcane",
@@ -94,7 +185,10 @@
     },
     {
       "attribute": "Dexterity/Faith/Arcane",
-      "compatibleWeapons": ["Fire Knight's Shortsword", "Erdsteel Dagger"]
+      "compatibleWeapons": [
+        "Fire Knight's Shortsword",
+        "Erdsteel Dagger"
+      ]
     },
     {
       "attribute": "Intelligence/Faith/Arcane",
