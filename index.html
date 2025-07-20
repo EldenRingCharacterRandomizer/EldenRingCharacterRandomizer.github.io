@@ -272,7 +272,7 @@
             spellsHtml += '</ul>';
 
             document.getElementById('spellsList').innerHTML = spellsHtml;
-            document.querySelector('.section-header p strong').textContent = `Spells: ${spellType}`;
+            document.getElementById('spellTypeLabel').textContent = `Spells: ${spellType}`;
         };
 
         document.getElementById('generateButton').addEventListener('click', async () => {
@@ -344,11 +344,10 @@
             }
 
             // Construct talismansHtml for initial display
-            let talismansHtml = '<ul id="talismanList">'; // Ensure ID is here
+            let talismansHtml = '';
             selectedTalismans.forEach((talisman, index) => {
-                talismansHtml += `<li><div>${talisman}</div><div><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div></li>`;
+                talismansHtml += `<li><div class="item-content">${talisman}</div><div class="item-reroll"><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div></li>`;
             });
-            talismansHtml += '</ul>';
 
             try {
                 const response = await fetch('elden_ring_spells.json');
@@ -424,8 +423,7 @@
             let talismansDisplayHtml = '';
             selectedTalismans.forEach((talisman, index) => {
                 talismansDisplayHtml += `
-                    <div class="item-content">${talisman}</div>
-                    <div class="item-reroll"><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div>
+                    <li><div class="item-content">${talisman}</div><div class="item-reroll"><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div></li>
                 `;
             });
 
@@ -453,10 +451,10 @@
                         <p><strong>Talismans:</strong></p>
                         <button class="reroll-button" onclick="rerollAllTalismans()">&#x21bb;</button>
                     </div>
-                    <div id="talismanList" class="full-width-item grid-container">${talismansDisplayHtml}</div>
+                    <ul id="talismanList" class="full-width-item grid-container">${talismansDisplayHtml}</ul>
 
                     <div class="section-header">
-                        <p><strong>Spells: ${spellType}</strong></p>
+                        <p><strong id="spellTypeLabel">Spells: ${spellType}</strong></p>
                         <button class="reroll-button" onclick="rerollSpells()">&#x21bb;</button>
                     </div>
                     <div class="item-list full-width-item" id="spellsList">${spellsHtml}</div>
