@@ -3,6 +3,7 @@
      <tr style="text-align: center;"> 
       <th class=" " style="width: 118px; text-align: center;">Spell Name</th> 
       <th style="width: 76px; text-align: center;">Type</th> 
+      <th style="width: 100px; text-align: center;">Caster Weapon</th> 
       <th class="" style="width: 112px; text-align: center;">Effect</th> 
       <th class="" style="width: 42px; text-align: center;">FP</th> 
       <th class="" style="width: 26px; text-align: center;">Slot</th> 
@@ -18,7 +19,8 @@
      <tr> 
       <td style="width: 744.781px; text-align: center;"> <p><a class="wiki_link" title="Elden Ring Furious Blade of Ansbach" href="/Furious+Blade+of+Ansbach" target=""><img style="width: 100px; height: 100px;" title="Elden Ring Shadow of the Erdtree Furious Blade of Ansbach" src="/file/Elden-Ring/furious_blade_of_ansbach_incantation_elden_ring_shadow_of_the_erdtree_dlc_wiki_guide_200px.png" alt="furious blade of ansbach incantation elden ring shadow of the erdtree dlc wiki guide 200px"><br>Furious Blade of Ansbach</a></p> </td> 
       <td style="width: 660px;"><a class="wiki_link" title="Elden Ring Incantations" href="/Incantations" target="">Incantations</a></td> 
-      <td style="width: 660px;">Cleaves through enemies with bloodflame blade summoned from side of the hand</td> 
+      <td style="width: 660px;">Cleaves through enemies with bloodflame blade summoned from side of the hand</td>
+      <td style="width: 100px; text-align: center;"></td> 
       <td style="width: 93px; text-align: center;">18</td> 
       <td style="width: 93px; text-align: center;">1</td> 
       <td style="width: 93px; text-align: center;">0</td> 
@@ -2786,3 +2788,46 @@
      </tr> 
     </tbody> 
    <tfoot></tfoot></table>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Promise.all([
+            fetch('elden_ring_spells.json').then(response => response.json()),
+            fetch('elden_ring_casting_weapons.json').then(response => response.json())
+        ])
+        .then(([spells, castingWeapons]) => {
+            const tableRows = document.querySelectorAll('#spellTableBody tr');
+            const seals = castingWeapons.seals;
+            const staffs = castingWeapons.staffs;
+
+            tableRows.forEach(row => {
+                const typeCell = row.children[1]; // Assuming Type is the second column (index 1)
+                const casterWeaponCell = row.children[2]; // Assuming Caster Weapon is the third column (index 2)
+
+                if (typeCell && casterWeaponCell) {
+                    const spellType = typeCell.textContent.trim();
+
+                    let randomWeapon = null;
+                    if (spellType.includes('Sorcery')) {
+                        if (staffs.length > 0) {
+                            randomWeapon = staffs[Math.floor(Math.random() * staffs.length)];
+                        }
+                    } else if (spellType.includes('Incantation')) {
+                        if (seals.length > 0) {
+                            randomWeapon = seals[Math.floor(Math.random() * seals.length)];
+                        }
+                    }
+
+                    if (randomWeapon) {
+                        casterWeaponCell.innerHTML = `<a href="${randomWeapon.url}" target="_blank">${randomWeapon.name}</a>`;
+                    } else {
+                        casterWeaponCell.textContent = 'None';
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Error loading data:', error));
+    });
+   </script>
+</body>
+</html>
