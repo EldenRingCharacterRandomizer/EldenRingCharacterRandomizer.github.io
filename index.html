@@ -79,10 +79,34 @@
             border-radius: 8px;
             text-align: left;
             min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .grid-container > *:not(:first-child) {
+            border-top: 1px solid #444;
+            padding-top: 10px;
+        }
+
+        .grid-container > * {
+            grid-column: span 2;
+        }
+
+        .grid-container .reroll-item {
+            display: contents;
+        }
+
+        .grid-container .reroll-item > div:first-child {
+            grid-column: 1;
+        }
+
+        .grid-container .reroll-item > div:last-child {
+            grid-column: 2;
         }
         #characterDisplay p {
             margin: 8px 0;
@@ -137,7 +161,7 @@
             if (talismanListElement) {
                 const listItem = talismanListElement.children[index];
                 if (listItem) {
-                    listItem.innerHTML = `<div>${newTalismanName}</div><div><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div>`;
+                    listItem.children[0].textContent = newTalismanName;
                 }
             }
         };
@@ -147,7 +171,7 @@
             if (!primaryWeaponData) return;
             const weaponNames = Object.keys(primaryWeaponData);
             const randomWeaponName = weaponNames[Math.floor(Math.random() * weaponNames.length)];
-            document.getElementById('primaryWeapon').innerHTML = `<span>${randomWeaponName}</span> <button class="reroll-button" onclick="rerollWeapon()">&#x21bb;</button>`;
+            document.getElementById('primaryWeapon').children[0].textContent = randomWeaponName;
         };
 
         // Function to reroll the armor set
@@ -158,7 +182,7 @@
             const selectedArmorSets = armorData[randomArmorType];
             const randomArmorSet = selectedArmorSets[Math.floor(Math.random() * selectedArmorSets.length)];
             const armorSetName = randomArmorSet.name;
-            document.getElementById('armorSet').innerHTML = `<span>${armorSetName}</span> <button class="reroll-button" onclick="rerollArmor()">&#x21bb;</button>`;
+            document.getElementById('armorSet').children[0].textContent = armorSetName;
         };
 
         // Function to reroll the spirit ashes
@@ -223,12 +247,8 @@
             }
             spellsHtml += '</ul>';
 
-            document.getElementById('spellsContainer').innerHTML = `
-                <p><strong>Spells: ${spellType}</strong> <button class="reroll-button" onclick="rerollSpells()">&#x21bb;</button></p>
-                <div id="spellsList">
-                    ${spellsHtml}
-                </div>
-            `;
+            document.getElementById('spellsList').innerHTML = spellsHtml;
+            document.getElementById('spellsContainer').children[0].innerHTML = `<strong>Spells: ${spellType}</strong>`;
         };
 
         document.getElementById('generateButton').addEventListener('click', async () => {
@@ -375,26 +395,36 @@
             const armorSetName = randomArmorSet.name;
 
             displayDiv.innerHTML = `
-                <p><strong>Primary Weapon:</strong></p>
-                <div class="reroll-item" id="primaryWeapon">
-                    <span>${randomWeaponName}</span>
-                    <button class="reroll-button" onclick="rerollWeapon()">&#x21bb;</button>
-                </div>
-                <p><strong>Spirit Ashes:</strong> <button class="reroll-button" onclick="rerollSpiritAshes()">&#x21bb;</button></p>
-                <div id="spiritAshesList">
-                    ${spiritAshesHtml}
-                </div>
-                <p><strong>Armor Set:</strong></p>
-                <div class="reroll-item" id="armorSet">
-                    <span>${armorSetName}</span>
-                    <button class="reroll-button" onclick="rerollArmor()">&#x21bb;</button>
-                </div>
-                <p><strong>Talismans:</strong></p>
-                ${talismansHtml}
-                <div id="spellsContainer">
-                    <p><strong>Spells: ${spellType}</strong> <button class="reroll-button" onclick="rerollSpells()">&#x21bb;</button></p>
-                    <div id="spellsList">
-                        ${spellsHtml}
+                <div class="grid-container">
+                    <p><strong>Primary Weapon:</strong></p>
+                    <div class="reroll-item" id="primaryWeapon">
+                        <div>${randomWeaponName}</div>
+                        <div><button class="reroll-button" onclick="rerollWeapon()">&#x21bb;</button></div>
+                    </div>
+
+                    <p><strong>Spirit Ashes:</strong></p>
+                    <div class="reroll-item" id="spiritAshesContainer">
+                        <div id="spiritAshesList">${spiritAshesHtml}</div>
+                        <div><button class="reroll-button" onclick="rerollSpiritAshes()">&#x21bb;</button></div>
+                    </div>
+
+                    <p><strong>Armor Set:</strong></p>
+                    <div class="reroll-item" id="armorSet">
+                        <div>${armorSetName}</div>
+                        <div><button class="reroll-button" onclick="rerollArmor()">&#x21bb;</button></div>
+                    </div>
+
+                    <p><strong>Talismans:</strong></p>
+                    <div id="talismanListContainer">
+                        ${talismansHtml}
+                    </div>
+
+                    <div id="spellsContainer">
+                        <p><strong>Spells: ${spellType}</strong></p>
+                        <div class="reroll-item">
+                            <div id="spellsList">${spellsHtml}</div>
+                            <div><button class="reroll-button" onclick="rerollSpells()">&#x21bb;</button></div>
+                        </div>
                     </div>
                 </div>
             `;
