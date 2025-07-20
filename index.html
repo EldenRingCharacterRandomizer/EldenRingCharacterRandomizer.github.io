@@ -238,8 +238,8 @@
             if (!primaryWeaponData) return;
             const weaponNames = Object.keys(primaryWeaponData);
             const randomWeaponName = weaponNames[Math.floor(Math.random() * weaponNames.length)];
-            const randomWeapon = primaryWeaponData[randomWeaponName];
-            document.getElementById('primaryWeapon').innerHTML = `<a href="${randomWeapon.link}" target="_blank">${randomWeapon.name}</a>`;
+            const randomWeaponLink = primaryWeaponData[randomWeaponName];
+            document.getElementById('primaryWeapon').innerHTML = `<a href="${randomWeaponLink}" target="_blank">${randomWeaponName}</a>`;
         };
 
         // Function to reroll the armor set
@@ -367,7 +367,8 @@
             }
             const weaponNames = Object.keys(primaryWeaponData);
             const randomWeaponName = weaponNames[Math.floor(Math.random() * weaponNames.length)];
-            const randomWeapon = primaryWeaponData[randomWeaponName];
+            const randomWeaponLink = primaryWeaponData[randomWeaponName];
+            const randomWeapon = { name: randomWeaponName, link: randomWeaponLink };
 
             try {
                 const response = await fetch('elden_ring_casting_weapons.json');
