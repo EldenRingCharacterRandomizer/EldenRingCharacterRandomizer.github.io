@@ -142,6 +142,29 @@
             align-items: center;
             width: 100%; /* Ensure it takes full width of its container */
         }
+        .coffee-link {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .coffee-link a {
+            display: inline-block;
+            background-color: #66bb6a;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            text-decoration: none;
+        }
+        .coffee-link a:hover {
+            background-color: #5cb85c;
+        }
+        .coffee-link a:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
@@ -150,6 +173,11 @@
         <button id="generateButton">Generate Random Character</button>
         <div id="characterDisplay">
             <p>Click the button to generate your Elden Ring character!</p>
+        </div>
+        <div class="coffee-link">
+            <a href="https://buymeacoffee.com/EnigmaMachineDev" target="_blank" rel="noopener noreferrer">
+                ☕ Buy me a coffee
+            </a>
         </div>
     </div>
 
@@ -430,17 +458,19 @@
             let casterWeaponName = 'None';
             let casterWeaponLink = '#';
 
-            // Call rerollCasterWeapon to get the initial caster weapon based on the rolled spell type
-            // Note: rerollCasterWeapon directly updates the DOM, so we don't need its return value here.
-            rerollCasterWeapon();
-
-            // Get the updated caster weapon name and link from the DOM after rerollCasterWeapon has run
-            const casterWeaponElement = document.getElementById('casterWeapon');
-            if (casterWeaponElement) {
-                const anchorElement = casterWeaponElement.querySelector('a');
-                if (anchorElement) {
-                    casterWeaponName = anchorElement.textContent;
-                    casterWeaponLink = anchorElement.href;
+            if (currentSpellType === '(Sorceries)') {
+                const staffs = eldenRingCastingWeaponsData.staffs;
+                if (staffs.length > 0) {
+                    const randomStaff = staffs[Math.floor(Math.random() * staffs.length)];
+                    casterWeaponName = randomStaff.name;
+                    casterWeaponLink = randomStaff.link;
+                }
+            } else if (currentSpellType === '(Incantations)') {
+                const seals = eldenRingCastingWeaponsData.seals;
+                if (seals.length > 0) {
+                    const randomSeal = seals[Math.floor(Math.random() * seals.length)];
+                    casterWeaponName = randomSeal.name;
+                    casterWeaponLink = randomSeal.link;
                 }
             }
 
