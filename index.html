@@ -122,6 +122,7 @@
         let primaryWeaponData;
         let armorData;
         let spiritAshesData;
+        let eldenRingSpellsData;
 
         // Function to reroll a single talisman
         window.rerollTalisman = (index) => {
@@ -180,6 +181,54 @@
             spiritAshesHtml += '</ul>';
 
             document.getElementById('spiritAshesList').innerHTML = spiritAshesHtml;
+        };
+
+        // Function to reroll the spells
+        window.rerollSpells = () => {
+            if (!eldenRingSpellsData) return;
+
+            const spellRoll = Math.floor(Math.random() * 3) + 1;
+            let selectedSpells = [];
+            let spellsHtml = '<ul>';
+            let spellType = '';
+
+            if (spellRoll === 2) { // Sorceries
+                spellType = 'Sorcery';
+                const sorceries = eldenRingSpellsData.filter(spell => spell.type === 'Sorcery');
+                const numberOfSpells = Math.floor(Math.random() * 3) + 1;
+                const spellsCopy = [...sorceries];
+                for (let i = 0; i < numberOfSpells; i++) {
+                    if (spellsCopy.length === 0) break;
+                    const randomIndex = Math.floor(Math.random() * spellsCopy.length);
+                    selectedSpells.push(spellsCopy.splice(randomIndex, 1)[0].name);
+                }
+            } else if (spellRoll === 3) { // Incantations
+                spellType = 'Incantation';
+                const incantations = eldenRingSpellsData.filter(spell => spell.type === 'Incantation');
+                const numberOfSpells = Math.floor(Math.random() * 3) + 1;
+                const spellsCopy = [...incantations];
+                for (let i = 0; i < numberOfSpells; i++) {
+                    if (spellsCopy.length === 0) break;
+                    const randomIndex = Math.floor(Math.random() * spellsCopy.length);
+                    selectedSpells.push(spellsCopy.splice(randomIndex, 1)[0].name);
+                }
+            }
+
+            if (selectedSpells.length > 0) {
+                selectedSpells.forEach(spell => {
+                    spellsHtml += `<li>${spell}</li>`;
+                });
+            } else {
+                spellsHtml += '<li>None</li>';
+            }
+            spellsHtml += '</ul>';
+
+            document.getElementById('spellsContainer').innerHTML = `
+                <p><strong>Spells: ${spellType}</strong> <button class="reroll-button" onclick="rerollSpells()">&#x21bb;</button></p>
+                <div id="spellsList">
+                    ${spellsHtml}
+                </div>
+            `;
         };
 
         document.getElementById('generateButton').addEventListener('click', async () => {
@@ -257,7 +306,6 @@
             });
             talismansHtml += '</ul>';
 
-            let eldenRingSpellsData;
             try {
                 const response = await fetch('elden_ring_spells.json');
                 if (!response.ok) {
@@ -343,8 +391,12 @@
                 </div>
                 <p><strong>Talismans:</strong></p>
                 ${talismansHtml}
-                <p><strong>Spells:</strong></p>
-                ${spellsHtml}
+                <div id="spellsContainer">
+                    <p><strong>Spells: ${spellType}</strong> <button class="reroll-button" onclick="rerollSpells()">&#x21bb;</button></p>
+                    <div id="spellsList">
+                        ${spellsHtml}
+                    </div>
+                </div>
             `;
         });
     </script>
