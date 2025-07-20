@@ -68,17 +68,28 @@
         .reroll-button:active {
             transform: scale(0.98);
         }
-        .reroll-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
         #characterDisplay {
             background-color: #333;
             padding: 20px;
             border-radius: 8px;
             text-align: left;
             min-height: 150px;
+        }
+
+        #characterDisplay p {
+            margin: 8px 0;
+            font-size: 1.1em;
+            color: #fff;
+        }
+
+        #characterDisplay p strong {
+            color: #66bb6a;
+        }
+
+        #characterDisplay ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         .grid-container {
@@ -88,46 +99,32 @@
             align-items: center;
         }
 
-        .grid-container > *:not(:first-child) {
+        .section-header {
+            grid-column: span 2;
             border-top: 1px solid #444;
             padding-top: 10px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .grid-container > * {
-            grid-column: span 2;
+        .section-header:first-of-type {
+            border-top: none;
+            margin-top: 0;
+            padding-top: 0;
         }
 
-        .grid-container .reroll-item {
-            display: contents;
-        }
-
-        .grid-container .reroll-item > div:first-child {
+        .item-content, .item-list {
             grid-column: 1;
         }
 
-        .grid-container .reroll-item > div:last-child {
+        .item-reroll {
             grid-column: 2;
         }
-        #characterDisplay p {
-            margin: 8px 0;
-            font-size: 1.1em;
-            color: #fff;
-        }
-        #characterDisplay p strong {
-            color: #66bb6a;
-        }
-        #characterDisplay ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        #characterDisplay ul li {
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-        }
-        #characterDisplay ul li > div:first-child {
-            flex-grow: 1;
+
+        .full-width-item {
+            grid-column: span 2;
         }
     </style>
 </head>
@@ -166,12 +163,37 @@
             }
         };
 
+        // Function to reroll all talismans
+        window.rerollAllTalismans = () => {
+            if (allTalismansData.length === 0) return;
+
+            const numberOfTalismans = 4;
+            selectedTalismans = [];
+            const talismansCopy = [...allTalismansData];
+
+            for (let i = 0; i < numberOfTalismans; i++) {
+                if (talismansCopy.length === 0) break;
+                const randomIndex = Math.floor(Math.random() * talismansCopy.length);
+                selectedTalismans.push(talismansCopy.splice(randomIndex, 1)[0].name);
+            }
+
+            const talismanListElement = document.getElementById('talismanList');
+            if (talismanListElement) {
+                selectedTalismans.forEach((talisman, index) => {
+                    const listItem = talismanListElement.children[index];
+                    if (listItem) {
+                        listItem.children[0].textContent = talisman;
+                    }
+                });
+            }
+        };
+
         // Function to reroll the primary weapon
         window.rerollWeapon = () => {
             if (!primaryWeaponData) return;
             const weaponNames = Object.keys(primaryWeaponData);
             const randomWeaponName = weaponNames[Math.floor(Math.random() * weaponNames.length)];
-            document.getElementById('primaryWeapon').children[0].textContent = randomWeaponName;
+            document.getElementById('primaryWeapon').textContent = randomWeaponName;
         };
 
         // Function to reroll the armor set
@@ -182,7 +204,7 @@
             const selectedArmorSets = armorData[randomArmorType];
             const randomArmorSet = selectedArmorSets[Math.floor(Math.random() * selectedArmorSets.length)];
             const armorSetName = randomArmorSet.name;
-            document.getElementById('armorSet').children[0].textContent = armorSetName;
+            document.getElementById('armorSet').textContent = armorSetName;
         };
 
         // Function to reroll the spirit ashes
@@ -217,7 +239,7 @@
             let spellType = '';
 
             if (spellRoll === 2) { // Sorceries
-                spellType = 'Sorcery';
+                spellType = '(Sorceries)';
                 const sorceries = eldenRingSpellsData.filter(spell => spell.type === 'Sorcery');
                 const numberOfSpells = Math.floor(Math.random() * 3) + 1;
                 const spellsCopy = [...sorceries];
@@ -227,7 +249,7 @@
                     selectedSpells.push(spellsCopy.splice(randomIndex, 1)[0].name);
                 }
             } else if (spellRoll === 3) { // Incantations
-                spellType = 'Incantation';
+                spellType = '(Incantations)';
                 const incantations = eldenRingSpellsData.filter(spell => spell.type === 'Incantation');
                 const numberOfSpells = Math.floor(Math.random() * 3) + 1;
                 const spellsCopy = [...incantations];
@@ -248,7 +270,7 @@
             spellsHtml += '</ul>';
 
             document.getElementById('spellsList').innerHTML = spellsHtml;
-            document.getElementById('spellsContainer').children[0].innerHTML = `<strong>Spells: ${spellType}</strong>`;
+            document.querySelector('.section-header p strong').textContent = `Spells: ${spellType}`;
         };
 
         document.getElementById('generateButton').addEventListener('click', async () => {
@@ -344,7 +366,7 @@
             let spellType = '';
 
             if (spellRoll === 2) { // Sorceries
-                spellType = 'Sorcery';
+                spellType = '(Sorceries)';
                 const sorceries = eldenRingSpellsData.filter(spell => spell.type === 'Sorcery');
                 const numberOfSpells = Math.floor(Math.random() * 3) + 1;
                 const spellsCopy = [...sorceries];
@@ -354,7 +376,7 @@
                     selectedSpells.push(spellsCopy.splice(randomIndex, 1)[0].name);
                 }
             } else if (spellRoll === 3) { // Incantations
-                spellType = 'Incantation';
+                spellType = '(Incantations)';
                 const incantations = eldenRingSpellsData.filter(spell => spell.type === 'Incantation');
                 const numberOfSpells = Math.floor(Math.random() * 3) + 1;
                 const spellsCopy = [...incantations];
@@ -394,38 +416,46 @@
             const randomArmorSet = selectedArmorSets[Math.floor(Math.random() * selectedArmorSets.length)];
             const armorSetName = randomArmorSet.name;
 
+            // Construct talismansHtml for initial display
+            let talismansDisplayHtml = '';
+            selectedTalismans.forEach((talisman, index) => {
+                talismansDisplayHtml += `
+                    <div class="item-content">${talisman}</div>
+                    <div class="item-reroll"><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div>
+                `;
+            });
+
             displayDiv.innerHTML = `
                 <div class="grid-container">
-                    <p><strong>Primary Weapon:</strong></p>
-                    <div class="reroll-item" id="primaryWeapon">
-                        <div>${randomWeaponName}</div>
-                        <div><button class="reroll-button" onclick="rerollWeapon()">&#x21bb;</button></div>
+                    <div class="section-header">
+                        <p><strong>Primary Weapon:</strong></p>
+                        <button class="reroll-button" onclick="rerollWeapon()">&#x21bb;</button>
                     </div>
+                    <div class="item-content" id="primaryWeapon">${randomWeaponName}</div>
 
-                    <p><strong>Spirit Ashes:</strong></p>
-                    <div class="reroll-item" id="spiritAshesContainer">
-                        <div id="spiritAshesList">${spiritAshesHtml}</div>
-                        <div><button class="reroll-button" onclick="rerollSpiritAshes()">&#x21bb;</button></div>
+                    <div class="section-header">
+                        <p><strong>Spirit Ashes:</strong></p>
+                        <button class="reroll-button" onclick="rerollSpiritAshes()">&#x21bb;</button>
                     </div>
+                    <div class="item-list full-width-item" id="spiritAshesList">${spiritAshesHtml}</div>
 
-                    <p><strong>Armor Set:</strong></p>
-                    <div class="reroll-item" id="armorSet">
-                        <div>${armorSetName}</div>
-                        <div><button class="reroll-button" onclick="rerollArmor()">&#x21bb;</button></div>
+                    <div class="section-header">
+                        <p><strong>Armor Set:</strong></p>
+                        <button class="reroll-button" onclick="rerollArmor()">&#x21bb;</button>
                     </div>
+                    <div class="item-content" id="armorSet">${armorSetName}</div>
 
-                    <p><strong>Talismans:</strong></p>
-                    <div id="talismanListContainer">
-                        ${talismansHtml}
+                    <div class="section-header">
+                        <p><strong>Talismans:</strong></p>
+                        <button class="reroll-button" onclick="rerollAllTalismans()">&#x21bb;</button>
                     </div>
+                    <div id="talismanList" class="full-width-item grid-container">${talismansDisplayHtml}</div>
 
-                    <div id="spellsContainer">
+                    <div class="section-header">
                         <p><strong>Spells: ${spellType}</strong></p>
-                        <div class="reroll-item">
-                            <div id="spellsList">${spellsHtml}</div>
-                            <div><button class="reroll-button" onclick="rerollSpells()">&#x21bb;</button></div>
-                        </div>
+                        <button class="reroll-button" onclick="rerollSpells()">&#x21bb;</button>
                     </div>
+                    <div class="item-list full-width-item" id="spellsList">${spellsHtml}</div>
                 </div>
             `;
         });
