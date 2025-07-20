@@ -258,6 +258,8 @@
                     const randomIndex = Math.floor(Math.random() * spellsCopy.length);
                     selectedSpells.push(spellsCopy.splice(randomIndex, 1)[0].name);
                 }
+            } else if (spellRoll === 1) { // None
+                spellType = '(None)';
             }
 
             if (selectedSpells.length > 0) {
@@ -385,6 +387,8 @@
                     const randomIndex = Math.floor(Math.random() * spellsCopy.length);
                     selectedSpells.push(spellsCopy.splice(randomIndex, 1)[0].name);
                 }
+            } else if (spellRoll === 1) { // None
+                spellType = '(None)';
             }
 
             if (selectedSpells.length > 0) {
