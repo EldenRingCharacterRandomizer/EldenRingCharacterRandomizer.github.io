@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elden Ring Character Randomizer</title>
-    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn46yPC90ZXh0Pjwvc3ZnPg==" type="image/svg+xml">
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn46yPC90eHQ+PC9zdmc+=" type="image/svg+xml">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -178,7 +178,7 @@
             <a href="https://buymeacoffee.com/EnigmaMachineDev" target="_blank" rel="noopener noreferrer">
                 ☕ Buy me a coffee
             </a>
-        </div>
+        }
     </div>
 
     <script>
@@ -203,7 +203,7 @@
             if (talismanListElement) {
                 const listItem = talismanListElement.children[index];
                 if (listItem) {
-                    listItem.querySelector('.item-content').innerHTML = `${newTalisman.name} (<a href="${newTalisman.link}" target="_blank">link</a>)`;
+                    listItem.querySelector('.item-content').innerHTML = `${newTalisman.name} <a href="${newTalisman.link}" target="_blank" style="color: #66bb6a;">(link)</a>`;
                 }
             }
         };
@@ -227,7 +227,7 @@
                 selectedTalismans.forEach((talisman, index) => {
                     const listItem = talismanListElement.children[index];
                     if (listItem) {
-                        listItem.querySelector('.item-content').innerHTML = `${talisman.name} (<a href="${talisman.link}" target="_blank">link</a>)`;
+                                                listItem.querySelector('.item-content').innerHTML = `${talisman.name} <a href="${talisman.link}" target="_blank" style="color: #66bb6a;">(link)</a>`;
                     }
                 });
             }
@@ -239,7 +239,7 @@
             const weaponNames = Object.keys(primaryWeaponData);
             const randomWeaponName = weaponNames[Math.floor(Math.random() * weaponNames.length)];
             const randomWeaponLink = primaryWeaponData[randomWeaponName];
-            document.getElementById('primaryWeapon').innerHTML = `${randomWeaponName} (<a href="${randomWeaponLink}" target="_blank">link</a>)`;
+            document.getElementById('primaryWeapon').innerHTML = `${randomWeaponName} <a href="${randomWeaponLink}" target="_blank" style="color: #66bb6a;">(link)</a>`;
         };
 
         // Function to reroll the armor set
@@ -251,7 +251,7 @@
             const randomArmorSet = selectedArmorSets[Math.floor(Math.random() * selectedArmorSets.length)];
             const armorSetName = randomArmorSet.name;
             const armorSetLink = randomArmorSet.link;
-            document.getElementById('armorSet').innerHTML = `${armorSetName} (<a href="${armorSetLink}" target="_blank">link</a>)`;
+                        document.getElementById('armorSet').innerHTML = `${armorSetName} <a href="${armorSetLink}" target="_blank" style="color: #66bb6a;">(link)</a>`;
         };
 
         // Function to reroll the spirit ashes
@@ -269,7 +269,7 @@
 
             let spiritAshesHtml = '<ul>';
             selectedSpiritAshes.forEach(ash => {
-                spiritAshesHtml += `<li>${ash.name} (<a href="${ash.link}" target="_blank">link</a>)</li>`;
+                spiritAshesHtml += `<li>${ash.name} <a href="${ash.link}" target="_blank" style="color: #66bb6a;">(link)</a></li>`;
             });
             spiritAshesHtml += '</ul>';
 
@@ -286,23 +286,27 @@
                 if (staffs.length > 0) {
                     const randomStaff = staffs[Math.floor(Math.random() * staffs.length)];
                     casterWeaponName = randomStaff.name;
-                    casterWeaponLink = randomStaff.link;
+                    casterWeaponLink = randomStaff.url;
                 }
             } else if (spellType === '(Incantations)') {
                 const seals = eldenRingCastingWeaponsData.seals;
                 if (seals.length > 0) {
                     const randomSeal = seals[Math.floor(Math.random() * seals.length)];
                     casterWeaponName = randomSeal.name;
-                    casterWeaponLink = randomSeal.link;
+                    casterWeaponLink = randomSeal.url;
                 }
             }
             return { casterWeaponName, casterWeaponLink };
         }
 
         function rerollCasterWeapon() {
-            if (!eldenRingCastingWeaponsData || !currentSpellType) return;
+            if (!eldenRingCastingWeaponsData || currentSpellType === '(None)') {
+                document.getElementById('casterWeaponContainer').style.display = 'none';
+                return;
+            }
+            document.getElementById('casterWeaponContainer').style.display = 'block';
             const { casterWeaponName, casterWeaponLink } = generateCasterWeaponData(currentSpellType);
-            document.getElementById('casterWeapon').innerHTML = `${casterWeaponName} (<a href="${casterWeaponLink}" target="_blank">link</a>)`;
+            document.getElementById('casterWeapon').innerHTML = `${casterWeaponName} <a href="${casterWeaponLink}" target="_blank" style="color: #66bb6a;">(link)</a>`;
         }
 
         function generateSpellData() {
@@ -339,7 +343,7 @@
 
             if (selectedSpells.length > 0) {
                 selectedSpells.forEach(spell => {
-                    spellsHtml += `<li>${spell.name} (<a href="${spell.link}" target="_blank">link</a>)</li>`;
+                    spellsHtml += `<li>${spell.name} <a href="${spell.link}" target="_blank" style="color: #66bb6a;">(link)</a></li>`;
                 });
             } else {
                 spellsHtml += '<li>None</li>';
@@ -418,7 +422,7 @@
 
             let spiritAshesHtml = '<ul>';
             selectedSpiritAshes.forEach(ash => {
-                spiritAshesHtml += `<li>${ash.name} (<a href="${ash.link}" target="_blank">link</a>)</li>`;
+                spiritAshesHtml += `<li>${ash.name} <a href="${ash.link}" target="_blank" style="color: #66bb6a;">(link)</a></li>`;
             });
             spiritAshesHtml += '</ul>';
 
@@ -449,7 +453,7 @@
             talismansDisplayHtml = '';
             selectedTalismans.forEach((talisman, index) => {
                 talismansDisplayHtml += `
-                    <li><div class="item-content">${talisman.name} (<a href="${talisman.link}" target="_blank">link</a>)</div><div class="item-reroll"><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div></li>
+                    <li><div class="item-content">${talisman.name} <a href="${talisman.link}" target="_blank" style="color: #66bb6a;">(link)</a></div><div class="item-reroll"><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div></li>
                 `;
             });
 
@@ -493,9 +497,20 @@
             talismansDisplayHtml = '';
             selectedTalismans.forEach((talisman, index) => {
                 talismansDisplayHtml += `
-                    <li><div class="item-content">${talisman.name} (<a href="${talisman.link}" target="_blank">link</a>)</div><div class="item-reroll"><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div></li>
+                    <li><div class="item-content">${talisman.name} <a href="${talisman.link}" target="_blank" style="color: #66bb6a;">(link)</a></div><div class="item-reroll"><button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></div></li>
                 `;
             });
+
+            let casterWeaponDisplay = '';
+            if (currentSpellType !== '(None)') {
+                casterWeaponDisplay = `
+                    <div class="section-header">
+                        <p><strong>Caster Weapon:</strong></p>
+                        <button class="reroll-button" onclick="rerollCasterWeapon()">&#x21bb;</button>
+                    </div>
+                    <div class="item-content" id="casterWeapon"><a href="${casterWeaponLink}" target="_blank">${casterWeaponName}</a></div>
+                `;
+            }
 
             displayDiv.innerHTML = `
                 <div class="grid-container">
@@ -503,7 +518,7 @@
                         <p><strong>Primary Weapon:</strong></p>
                         <button class="reroll-button" onclick="rerollWeapon()">&#x21bb;</button>
                     </div>
-                    <div class="item-content" id="primaryWeapon">${randomWeapon.name} (<a href="${randomWeapon.link}" target="_blank">link</a>)</div>
+                    <div class="item-content" id="primaryWeapon">${randomWeapon.name} <a href="${randomWeapon.link}" target="_blank" style="color: #66bb6a;">(link)</a></div>
 
                     <div class="section-header">
                         <p><strong>Spirit Ashes:</strong></p>
@@ -515,7 +530,7 @@
                         <p><strong>Armor Set:</strong></p>
                         <button class="reroll-button" onclick="rerollArmor()">&#x21bb;</button>
                     </div>
-                    <div class="item-content" id="armorSet">${armorSetName} (<a href="${armorSetLink}" target="_blank">link</a>)</div>
+                    <div class="item-content" id="armorSet">${armorSetName} <a href="${armorSetLink}" target="_blank" style="color: #66bb6a;">(link)</a></div>
 
                     <div class="section-header">
                         <p><strong>Talismans:</strong></p>
@@ -528,8 +543,8 @@
                         <button class="reroll-button" onclick="rerollSpells()">&#x21bb;</button>
                     </div>
                     <div class="item-list full-width-item" id="spellsList">${initialSpellsHtml}</div>
-                    <div class="full-width-item" style="margin-top: 10px;">
-                        <div class="item-content" id="casterWeapon">${casterWeaponName} (<a href="${casterWeaponLink}" target="_blank">link</a>)</div>
+                    <div id="casterWeaponContainer" class="full-width-item" style="margin-top: 10px; ${currentSpellType === '(None)' ? 'display: none;' : ''}">
+                        <strong>Caster Weapon:</strong> <span id="casterWeapon">${casterWeaponName} <a href="${casterWeaponLink}" target="_blank" style="color: #66bb6a;">(link)</a></span>
                     </div>
                 </div>
             `;
