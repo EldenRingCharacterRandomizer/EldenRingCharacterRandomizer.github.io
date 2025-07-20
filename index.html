@@ -178,7 +178,6 @@
             <a href="https://buymeacoffee.com/EnigmaMachineDev" target="_blank" rel="noopener noreferrer">
                 ☕ Buy me a coffee
             </a>
-        }
     </div>
 
     <script>
@@ -310,7 +309,7 @@
         }
 
         function generateSpellData() {
-            if (!eldenRingSpellsData) return { spellsHtml: '<ul><li>None</li></ul>', currentSpellType: '(None)' };
+            if (!eldenRingSpellsData) return { spellsHtml: '<ul></ul>', currentSpellType: '(None)' };
 
             const spellRoll = Math.floor(Math.random() * 3) + 1;
             let selectedSpells = [];
@@ -345,8 +344,6 @@
                 selectedSpells.forEach(spell => {
                     spellsHtml += `<li>${spell.name} <a href="${spell.link}" target="_blank" style="color: #66bb6a;">(link)</a></li>`;
                 });
-            } else {
-                spellsHtml += '<li>None</li>';
             }
             spellsHtml += '</ul>';
 
