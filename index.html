@@ -68,6 +68,11 @@
         .reroll-button:active {
             transform: scale(0.98);
         }
+        .reroll-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         #characterDisplay {
             background-color: #333;
             padding: 20px;
@@ -112,6 +117,8 @@
     <script>
         let allTalismansData; // Global variable for all talismans
         let selectedTalismans = []; // Global variable for selected talismans
+        let primaryWeaponData;
+        let armorData;
 
         // Function to reroll a single talisman
         window.rerollTalisman = (index) => {
@@ -131,11 +138,29 @@
             }
         };
 
+        // Function to reroll the primary weapon
+        window.rerollWeapon = () => {
+            if (!primaryWeaponData) return;
+            const weaponNames = Object.keys(primaryWeaponData);
+            const randomWeaponName = weaponNames[Math.floor(Math.random() * weaponNames.length)];
+            document.getElementById('primaryWeapon').innerHTML = `<span>${randomWeaponName}</span> <button class="reroll-button" onclick="rerollWeapon()">&#x21bb;</button>`;
+        };
+
+        // Function to reroll the armor set
+        window.rerollArmor = () => {
+            if (!armorData) return;
+            const armorTypes = ['light', 'medium', 'heavy'];
+            const randomArmorType = armorTypes[Math.floor(Math.random() * armorTypes.length)];
+            const selectedArmorSets = armorData[randomArmorType];
+            const randomArmorSet = selectedArmorSets[Math.floor(Math.random() * selectedArmorSets.length)];
+            const armorSetName = randomArmorSet.name;
+            document.getElementById('armorSet').innerHTML = `<span>${armorSetName}</span> <button class="reroll-button" onclick="rerollArmor()">&#x21bb;</button>`;
+        };
+
         document.getElementById('generateButton').addEventListener('click', async () => {
             const displayDiv = document.getElementById('characterDisplay');
             displayDiv.innerHTML = '<p>Generating character...</p>';
 
-            let primaryWeaponData;
             try {
                 const response = await fetch('elden_ring_weapons.json');
                 if (!response.ok) {
@@ -259,7 +284,6 @@
 
             const mockAttributes = "Mock Attributes";
 
-            let armorData;
             try {
                 const response = await fetch('elden_ring_armor.json');
                 if (!response.ok) {
@@ -279,10 +303,16 @@
             const armorSetName = randomArmorSet.name;
 
             displayDiv.innerHTML = `
-                <p><strong>Primary Weapon:</strong> ${randomWeaponName}</p>
+                <div class="reroll-item" id="primaryWeapon">
+                    <span>${randomWeaponName}</span>
+                    <button class="reroll-button" onclick="rerollWeapon()">&#x21bb;</button>
+                </div>
                 <p><strong>Spirit Ashes:</strong></p>
                 ${spiritAshesHtml}
-                <p><strong>Armor Set:</strong> ${armorSetName}</p>
+                <div class="reroll-item" id="armorSet">
+                    <span>${armorSetName}</span>
+                    <button class="reroll-button" onclick="rerollArmor()">&#x21bb;</button>
+                </div>
                 <p><strong>Talismans:</strong></p>
                 ${talismansHtml}
                 <p><strong>Spells:</strong></p>
