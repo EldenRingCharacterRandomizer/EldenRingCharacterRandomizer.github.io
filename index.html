@@ -94,6 +94,9 @@
         }
         #characterDisplay ul li {
             margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     </style>
 </head>
@@ -123,7 +126,7 @@
             if (talismanListElement) {
                 const listItem = talismanListElement.children[index];
                 if (listItem) {
-                    listItem.innerHTML = `${newTalismanName} <button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button>`;
+                    listItem.innerHTML = `<span>${newTalismanName}</span> <button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button>`;
                 }
             }
         };
@@ -201,7 +204,7 @@
             // Construct talismansHtml for initial display
             let talismansHtml = '<ul id="talismanList">'; // Ensure ID is here
             selectedTalismans.forEach((talisman, index) => {
-                talismansHtml += `<li>${talisman} <button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></li>`;
+                talismansHtml += `<li><span>${talisman}</span> <button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></li>`;
             });
             talismansHtml += '</ul>';
 
