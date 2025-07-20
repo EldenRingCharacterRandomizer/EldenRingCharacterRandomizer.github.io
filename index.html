@@ -49,6 +49,25 @@
         button:active {
             transform: scale(0.98);
         }
+        .reroll-button {
+            background-color: #66bb6a;
+            color: #1a1a1a;
+            border: none;
+            padding: 5px 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        .reroll-button:hover {
+            background-color: #5cb85c;
+        }
+        .reroll-button:active {
+            transform: scale(0.98);
+        }
         #characterDisplay {
             background-color: #333;
             padding: 20px;
@@ -104,7 +123,7 @@
             if (talismanListElement) {
                 const listItem = talismanListElement.children[index];
                 if (listItem) {
-                    listItem.innerHTML = `${newTalismanName} <button onclick="rerollTalisman(${index})">Reroll</button>`;
+                    listItem.innerHTML = `${newTalismanName} <button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button>`;
                 }
             }
         };
@@ -182,7 +201,7 @@
             // Construct talismansHtml for initial display
             let talismansHtml = '<ul id="talismanList">'; // Ensure ID is here
             selectedTalismans.forEach((talisman, index) => {
-                talismansHtml += `<li>${talisman} <button onclick="rerollTalisman(${index})">Reroll</button></li>`;
+                talismansHtml += `<li>${talisman} <button class="reroll-button" onclick="rerollTalisman(${index})">&#x21bb;</button></li>`;
             });
             talismansHtml += '</ul>';
 
@@ -198,20 +217,41 @@
                 displayDiv.innerHTML = '<p style="color: red;">Failed to load spells data.</p>';
                 return;
             }
-            const numberOfSpells = Math.floor(Math.random() * 3) + 1; // Random number between 1 and 3
-            const selectedSpells = [];
-            const spellsCopy = [...eldenRingSpellsData];
 
-            for (let i = 0; i < numberOfSpells; i++) {
-                if (spellsCopy.length === 0) break;
-                const randomIndex = Math.floor(Math.random() * spellsCopy.length);
-                selectedSpells.push(spellsCopy.splice(randomIndex, 1)[0].name);
+            const spellRoll = Math.floor(Math.random() * 3) + 1;
+            let selectedSpells = [];
+            let spellsHtml = '<ul>';
+            let spellType = '';
+
+            if (spellRoll === 2) { // Sorceries
+                spellType = 'Sorcery';
+                const sorceries = eldenRingSpellsData.filter(spell => spell.type === 'Sorcery');
+                const numberOfSpells = Math.floor(Math.random() * 3) + 1;
+                const spellsCopy = [...sorceries];
+                for (let i = 0; i < numberOfSpells; i++) {
+                    if (spellsCopy.length === 0) break;
+                    const randomIndex = Math.floor(Math.random() * spellsCopy.length);
+                    selectedSpells.push(spellsCopy.splice(randomIndex, 1)[0].name);
+                }
+            } else if (spellRoll === 3) { // Incantations
+                spellType = 'Incantation';
+                const incantations = eldenRingSpellsData.filter(spell => spell.type === 'Incantation');
+                const numberOfSpells = Math.floor(Math.random() * 3) + 1;
+                const spellsCopy = [...incantations];
+                for (let i = 0; i < numberOfSpells; i++) {
+                    if (spellsCopy.length === 0) break;
+                    const randomIndex = Math.floor(Math.random() * spellsCopy.length);
+                    selectedSpells.push(spellsCopy.splice(randomIndex, 1)[0].name);
+                }
             }
 
-            let spellsHtml = '<ul>';
-            selectedSpells.forEach(spell => {
-                spellsHtml += `<li>${spell}</li>`;
-            });
+            if (selectedSpells.length > 0) {
+                selectedSpells.forEach(spell => {
+                    spellsHtml += `<li>${spell}</li>`;
+                });
+            } else {
+                spellsHtml += '<li>None</li>';
+            }
             spellsHtml += '</ul>';
 
             const mockAttributes = "Mock Attributes";
