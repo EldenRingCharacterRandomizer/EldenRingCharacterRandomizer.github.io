@@ -275,7 +275,7 @@
             document.getElementById('spiritAshesList').innerHTML = spiritAshesHtml;
         };
 
-        let currentSpellType = ''; // To store the current spell type for rerolling caster weapon
+        let currentSpellType = ''; // To store the current spell type for rerolling Staff/Seal
 
         function generateCasterWeaponData(spellType) {
             let casterWeaponName = 'None';
@@ -358,7 +358,7 @@
             currentSpellType = newSpellType;
 
             document.getElementById('spellsList').innerHTML = spellsHtml;
-            document.getElementById('spellTypeLabel').innerHTML = `<strong>Spells: ${currentSpellType}</strong>`;
+            document.getElementById('spellTypeLabel').textContent = `Spells: ${currentSpellType}`;
 
             rerollCasterWeapon();
         };
@@ -502,7 +502,7 @@
             if (currentSpellType !== '(None)') {
                 casterWeaponDisplay = `
                     <div class="section-header">
-                        <p><strong>Caster Weapon:</strong></p>
+                        <p><strong>Staff/Seal:</strong></p>
                         <button class="reroll-button" onclick="rerollCasterWeapon()">&#x21bb;</button>
                     </div>
                     <div class="item-content" id="casterWeapon"><a href="${casterWeaponLink}" target="_blank">${casterWeaponName}</a></div>
@@ -541,7 +541,7 @@
                     </div>
                     <div class="item-list full-width-item" id="spellsList">${initialSpellsHtml}</div>
                     <div id="casterWeaponContainer" class="full-width-item" style="margin-top: 10px; ${currentSpellType === '(None)' ? 'display: none;' : ''}">
-                        <strong>Caster Weapon:</strong> <span id="casterWeapon">${casterWeaponName} <a href="${casterWeaponLink}" target="_blank" style="color: #66bb6a;">(link)</a></span>
+                        <strong>Staff/Seal:</strong> <span id="casterWeapon">${casterWeaponName} <a href="${casterWeaponLink}" target="_blank" style="color: #66bb6a;">(link)</a></span>
                     </div>
                 </div>
             `;
