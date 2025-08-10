@@ -158,15 +158,3 @@
         .coffee-link a:active {
             transform: scale(0.98);
         }
-        .ad-banner {
-            width: 160px;
-            height: 600px;
-        }
-
-        .left-ad {
-            margin-right: 60px;
-        }
-
-        .right-ad {
-            margin-left: 60px;
-        }
